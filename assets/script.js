@@ -27,57 +27,70 @@ Il programma dovrà chiedere all'utente:
 
 //Viene attivato il pulsante genera
 
-document
-  .querySelector("button.btn-primary")
-  .addEventListener("click", function (event) {
-    event.preventDefault();
+document.querySelector("#start").addEventListener("click", function (event) {
+  event.preventDefault();
 
-    // chiedere all'utente il nome e cognome
+  // chiedere all'utente il nome e cognome
 
-    const fullname = document.getElementById("fullnameform").value;
+  const fullname = document.getElementById("fullnameform").value;
 
-    // chiedere all'utente il numero dei km da percorrere
+  // chiedere all'utente il numero dei km da percorrere
 
-    const km = parseFloat(document.getElementById("kmform").value);
+  const km = parseFloat(document.getElementById("kmform").value);
 
-    console.log(km);
+  // chiedere all'utente l'età
 
-    // chiedere all'utente l'età
+  const age = parseInt(document.getElementById("ageform").value);
 
-    const age = parseInt(document.getElementById("ageform").value);
+  // Controllare che siano numeri quelli inseriti
 
-    // Controllare che siano numeri quelli inseriti
+  if (isNaN(km) || isNaN(age)) {
+    document.getElementById("error").innerHTML = `INSERIRE I DATI `;
+  } else {
+    // Calcolare il prezzo del biglietto in base hai km (0,21 euro al km)
+    let price = km * 0.21;
+    let coupon = 0;
 
-    if (isNaN(km) || isNaN(age)) {
-      document.getElementById(
-        "error"
-      ).innerHTML = `INSERIRE I DATI CORRETTI! 😡`;
+    if (age < 18) {
+      //se l'età è minore di 18 anni scontare il 20%
+      coupon = 20;
+      document.getElementById("offerta").innerHTML = "20%";
+      document.getElementById("carrozza").innerHTML = "1";
+      document.getElementById("codice").innerHTML = "875628";
+    } else if (age > 65) {
+      // se l'età e maggiore di 65 anni scontare del 40%
+      coupon = 40;
+      document.getElementById("offerta").innerHTML = "40%";
+      document.getElementById("carrozza").innerHTML = "10";
+      document.getElementById("codice").innerHTML = "3628420";
     } else {
-      // Calcolare il prezzo del biglietto in base hai km (0,21 euro al km)
-      let price = km * 0.21;
-      let coupon = 0;
-
-      if (age < 18) {
-        //se l'età è minore di 18 anni scontare il 20%
-        coupon = 20;
-      } else if (age > 65) {
-        // se l'età e maggiore di 65 anni scontare del 40%
-        coupon = 40;
-      }
-
-      // calcolare prezzo con coupon
-      priceTot = price * ((100 - coupon) / 100);
-
-      // risultati in html
-      document.getElementById("nameUser").innerHTML = fullname;
-
-      // sezione biglietto visualizzabile
-      document.getElementById("ticketTrain").style.display = "block";
-
-      // far vedere i due decimali
-      document.getElementById("nameUser").innerHTML = fullname;
-      document.getElementById(
-        "priceTot"
-      ).innerHTML = `Il prezzo del biglietto è: ${priceTot.toFixed(2)} €`;
+      document.getElementById("offerta").innerHTML = "0%";
+      document.getElementById("carrozza").innerHTML = "5";
+      document.getElementById("codice").innerHTML = "1938389";
     }
-  });
+
+    // calcolare prezzo con coupon
+    priceTot = price * ((100 - coupon) / 100);
+    console.log(offerta);
+
+    // risultati in html
+    document.getElementById("nameUser").innerHTML = fullname;
+
+    // far vedere i due decimali
+
+    document.getElementById(
+      "costo"
+    ).innerHTML = `Il prezzo del biglietto è: ${priceTot.toFixed(2)} €`;
+    // sezione biglietto visualizzabile
+    //document.getElementById("ticketTrain").style.display = "block";
+    document.getElementById("ticketTrain").classList.remove("d-none");
+  }
+});
+document.querySelector("#reset").addEventListener("click", function (event) {
+  event.preventDefault();
+  document.getElementById("ticketTrain").classList.add("d-none");
+
+  document.getElementById("fullnameform").value = "";
+  document.getElementById("kmform").value = "";
+  document.getElementById("ageform").value = "";
+});

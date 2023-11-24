@@ -35,14 +35,14 @@
             </div>
           </div>
           <div class="col-12 d-flex justify-content-center mt-5">
-            <button type="" class="btn btn-primary me-2">GENERA</button>
-            <button type="reset" class="btn btn-outline-danger">ANNULLA</button>
+            <button id="start" class="btn btn-primary me-2">GENERA</button>
+            <button id="reset" class="btn btn-outline-danger">ANNULLA</button>
           </div>
         </form>
-        <div id="enteredData"></div>
       </div>
     </div>
-    <div class="container" id="ticketTrain">
+    <h1 class="text-center text-danger" id="error"></h1>
+    <div class="container d-none" id="ticketTrain">
       <h1 class="text-center m-5">IL TUO BIGLIETTO</h1>
       <div class="card mb-5">
         <div class="row g-0">
@@ -55,20 +55,20 @@
           </div>
           <div class="col-md-8">
             <div class="card-body ms-5">
-              <h2 class="card-title mb-3" id="nameUser">Nome passeggero</h2>
-              <p class="card-text mb-3">This is a wider</p>
+              <h2 class="card-title mb-3">Nome passeggero</h2>
+              <p class="card-text mb-3" id="nameUser"></p>
 
-              <h4 class="card-title" id="nameUser">Offerta</h4>
-              <p class="card-text mb-3">This is a wider</p>
+              <h4 class="card-title">Offerta</h4>
+              <p class="card-text mb-3" id="offerta"></p>
 
-              <h5 class="card-title mb-3" id="nameUser">Carrozza</h5>
-              <p class="card-text mb-3">This is a wider</p>
+              <h5 class="card-title mb-3">Carrozza</h5>
+              <p class="card-text mb-3" id="carrozza"></p>
 
-              <h5 class="card-title mb-3" id="nameUser">Codice CP</h5>
-              <p class="card-text mb-3">This is a wider</p>
+              <h5 class="card-title mb-3">Codice CP</h5>
+              <p class="card-text mb-3" id="codice"></p>
 
-              <h5 class="card-title" id="nameUser">Costo del biglietto</h5>
-              <p class="card-text">This is a wider</p>
+              <h5 class="card-title">Costo del biglietto</h5>
+              <p class="card-text" id="costo"></p>
             </div>
           </div>
         </div>
