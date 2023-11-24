@@ -25,43 +25,59 @@ Il programma dovrà chiedere all'utente:
 //prompt
 // if / else
 
-// chiedere all'utente il numero dei km da percorrere
+//Viene attivato il pulsante genera
 
-const km = parseFloat(prompt("Quanti chilometri vuoi percorrere?"));
+document
+  .querySelector("button.btn-primary")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
 
-// chiedere all'utente l'età
+    // chiedere all'utente il nome e cognome
 
-const age = parseInt(prompt("Quanti anni hai? ", "0"));
+    const fullname = document.getElementById("fullnameform").value;
 
-// Controllare che siano numeri quelli inseriti
+    // chiedere all'utente il numero dei km da percorrere
 
-if (isNaN(km) || isNaN(age)) {
-  document.getElementById("error").innerHTML = `INSERIRE I DATI CORRETTI! 😡`;
-} else {
-  // Calcolare il prezzo del biglietto in base hai km (0,21 euro al km)
+    const km = parseFloat(document.getElementById("kmform").value);
 
-  let price = km * 0.21;
+    console.log(km);
 
-  let priceTot = price;
+    // chiedere all'utente l'età
 
-  let coupon = 0;
+    const age = parseInt(document.getElementById("ageform").value);
 
-  //stamparlo in console
-  console.log("il prezzo senza sconto è:", price);
+    // Controllare che siano numeri quelli inseriti
 
-  if (age < 18) {
-    //se l'età è minore di 18 anni scontare il 20%
+    if (isNaN(km) || isNaN(age)) {
+      document.getElementById(
+        "error"
+      ).innerHTML = `INSERIRE I DATI CORRETTI! 😡`;
+    } else {
+      // Calcolare il prezzo del biglietto in base hai km (0,21 euro al km)
+      let price = km * 0.21;
+      let coupon = 0;
 
-    coupon = 20;
-  } else if (age > 65) {
-    // se l'età e maggiore di 65 anni scontare del 40%
+      if (age < 18) {
+        //se l'età è minore di 18 anni scontare il 20%
+        coupon = 20;
+      } else if (age > 65) {
+        // se l'età e maggiore di 65 anni scontare del 40%
+        coupon = 40;
+      }
 
-    coupon = 40;
-  }
+      // calcolare prezzo con coupon
+      priceTot = price * ((100 - coupon) / 100);
 
-  priceTot = price * ((100 - coupon) / 100);
+      // risultati in html
+      document.getElementById("nameUser").innerHTML = fullname;
 
-  document.getElementById(
-    "priceTot"
-  ).innerHTML = `Il prezzo del biglietto è: ${priceTot.toFixed(2)} €`;
-}
+      // sezione biglietto visualizzabile
+      document.getElementById("ticketTrain").style.display = "block";
+
+      // far vedere i due decimali
+      document.getElementById("nameUser").innerHTML = fullname;
+      document.getElementById(
+        "priceTot"
+      ).innerHTML = `Il prezzo del biglietto è: ${priceTot.toFixed(2)} €`;
+    }
+  });

@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>JS-BIGLIETTO-TRENO</title>
+    <title>JS-BIGLIETTO-TRENO-FORM</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -17,57 +17,63 @@
   </head>
   <body>
     <div class="container">
-      <!-- 
-        <div class="mt-5">
-        <h1 id="priceTot" class="text-center"></h1>
-        <h1 id="error" class="text-center alert alert-danger"></h1>
-      </div>
-      -->
       <h1 class="text-center mt-5">CALCOLA IL PREZZO DEL TUO BIGLIETTO</h1>
       <div class="card mt-5">
         <form class="m-5">
           <div class="row">
             <div class="mb-3 col-4 text-center">
-              <label for="exampleInputEmail1" class="form-label"
-                >Nome Cognome</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-              />
+              <label for="fullname" class="form-label">Nome Cognome</label>
+              <input type="text" class="form-control" id="fullnameform" />
             </div>
             <div class="mb-3 col-4 text-center">
-              <label for="exampleInputPassword1" class="form-label"
-                >Km da percorrere</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="exampleInputPassword1"
-              />
+              <label for="km" class="form-label">Km da percorrere</label>
+              <input type="number" class="form-control" id="kmform" />
             </div>
             <div class="mb-3 col-4 text-center">
-              <label for="exampleInputPassword1" class="form-label"
-                >Fascia d'età</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="exampleInputPassword1"
-              />
+              <label for="age" class="form-label">Fascia d'età</label>
+              <input type="number" class="form-control" id="ageform" />
             </div>
           </div>
-          <div class="col-12 d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary me-2">INVIA</button>
-            <button type="submit" class="btn btn-outline-danger">
-              ANNULLA
-            </button>
+          <div class="col-12 d-flex justify-content-center mt-5">
+            <button type="" class="btn btn-primary me-2">GENERA</button>
+            <button type="reset" class="btn btn-outline-danger">ANNULLA</button>
           </div>
         </form>
+        <div id="enteredData"></div>
       </div>
     </div>
-    <script src="./assets/Sscript.js" async defer></script>
+    <div class="container" id="ticketTrain">
+      <h1 class="text-center m-5">IL TUO BIGLIETTO</h1>
+      <div class="card mb-5">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img
+              src="../img/img_avatar.png"
+              class="img-fluid rounded-start"
+              alt="User"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body ms-5">
+              <h2 class="card-title mb-3" id="nameUser">Nome passeggero</h2>
+              <p class="card-text mb-3">This is a wider</p>
+
+              <h4 class="card-title" id="nameUser">Offerta</h4>
+              <p class="card-text mb-3">This is a wider</p>
+
+              <h5 class="card-title mb-3" id="nameUser">Carrozza</h5>
+              <p class="card-text mb-3">This is a wider</p>
+
+              <h5 class="card-title mb-3" id="nameUser">Codice CP</h5>
+              <p class="card-text mb-3">This is a wider</p>
+
+              <h5 class="card-title" id="nameUser">Costo del biglietto</h5>
+              <p class="card-text">This is a wider</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./assets/script.js" async defer></script>
   </body>
 </html>
